@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.pointer{
+		width: 1px;
+		height: 1px;
+		position: absolute;
+		top: 50%;
+		left: 50%
+	}
+	.circle{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: red;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+	.fen{
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: green;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		transition: all 1000ms;
+	}
+</style>
+<body>
+	<div class="pointer"></div>
+</body>
+<script>
+	function circle(r,num){
+	for(let i=0;i<num;i++){
+		if(i%30==0){
+			r+=30;
+		}
+		let div = document.createElement('div')
+		let pointer =document.querySelector('.pointer');
+		let fen = document.createElement('div')
+		fen.className='fen'
+		let x1 = r*Math.cos(360/30*i*Math.PI/180);
+		let y1 = r*Math.sin(360/30*i*Math.PI/180);
+		// fen.style.left=x1+'px';
+		// fen.style.top=y1+'px';
+		pointer.appendChild(fen)
+		setInterval(function(){
+			fen.style.transitionDelay=`${i*30}ms`
+				fen.style.left=x1+'px'
+				fen.style.top=y1+'px'},5)
+		}
+		
+		}
+	// for(let i=0;i<12;i++){
+	// 	let div = document.createElement('div')
+	// 	let pointer =document.querySelector('.pointer');
+	// 	let r =300;
+	// 	div.className='circle'	
+	// 	let x = r*Math.cos(360/12*i*Math.PI/180);
+	// 	let y = r*Math.sin(360/12*i*Math.PI/180);	
+	// 	div.style.left=x+'px';
+	// 	div.style.top=y+'px';	
+	// 	pointer.appendChild(div)
+	// }
+	circle(200,90)
+</script>
+</html>

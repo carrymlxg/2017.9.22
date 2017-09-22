@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		<div>DIV</div>
+		<span>SPAN</span>
+		<p>P</p>
+	</div>
+</body>
+<script>
+		//模拟insertafter:将element插入到position处
+	//  HTMLElement.prototype.insertAfter=function (element,position){
+	// 	let parent = this.parentNode;
+	// 	let next = this.nextElementSibling;
+	// 	console.log(next)
+	// 	if(next){
+	// 		parent.insertBefore(element, next)
+	// 	}
+	// 	else{
+	// 		parent.appendChild(element);
+	// 	}
+	// }
+	//prependChild:将某个元素插到最前面
+	// HTMLElement.prototype.prependChild=function  (element,position){
+	// 	let first = this.firstElementChild;
+		
+	// 	if(first){
+	// 	this.insertBefore(element,first)}
+	// 	else{
+	// 		this.appendChild(elememnt)
+	// 	}
+	// }
+	//清空
+	// function empty(parent){
+	// 	// let child = parent.children;
+	// 	// for (let i =child.length-1;i>=0;i--){
+	// 	// 	parent.removeChild(child[i])
+	// 	// 	child=null;		}
+	// 	parent.innerHTML=''
+	// }
+</script>
+<script>
+	let box =document.querySelector('.box')
+	let divs = document.createElement('div')
+	let span = document.querySelector('.box span')
+	divs.innerHTML='shabi'
+	
+	box.prependChild(divs)
+</script>
+</html>

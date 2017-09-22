@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+	<script>
+		let divs =document.createElement('div');
+		divs.style.width ='300px';
+		divs.style.height='300px';
+		divs.style.background='red';
+		let box =document.querySelector('.box')
+		box.appendChild(divs);
+		let p = document.createElement('p')
+		p.className='p'
+		p.style.cssText=`
+		width:150px;
+		height:200px;
+		background:blue`;
+		box.appendChild(p)
+	</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		<div class="son">
+			<span>这是son的子元素</span>
+		</div>
+		<p>这是P</p>
+		<ul>
+			<li></li>
+		</ul>
+		<span>这是son的兄弟元素</span>
+		<h1>这是h1</h1>
+		<!-- 注释 -->
+	</div>
+	<script>
+		// 用childnodes模仿children
+			// function child(parsen){
+			// 	let child = parsen.childNodes;
+			// 	let  newarr =[]
+			// 	for(let i = 0;i<child.length;i++){
+			// 		if(child[i].nodeType==1){
+			// 			newarr.push(child[i])
+			// 		}
+			// 	}
+			// 	return newarr;
+			// }
+		//找到某个元素节点之后的任意元素节点	
+		// function parsen(element,tagneame){
+		// 	let parsen = element.parentNode;//找到父元素
+		// 	let child = parsen.children;//父元素下的所有子元素
+		// 	let  index = 0;
+		// 	for(let i =0;i<child.length;i++){
+		// 		if(child[i]==element){
+		// 			index = 1
+		// 			break;
+		// 		}
+		// 	}
+		// 	let nextall =Array.from(child).slice(index+1);
+		// 	for(let i = 0;i<nextall.length;i++){
+		// 		if(nextall[i].nodeName==tagneame.toUpperCase()){
+		// 			return nextall[i];
+		// 		}
+		// 	}
+		// 	return null;
+		// }
+			//while循环
+			// function parsen(element,tagneame){
+			// 	let nexts = element.nextElementSibling;
+			// 	if (nexts ==null ){
+			// 		return null ;
+			// 	}
+			// 	while(nexts.nodeName !=tagneame.toUpperCase()){
+			//父级元素的查找
+			function parsen(element){
+				if(element.nodeName=='BODY'||element.nodeName=='HTML'){
+					return
+				}
+			// 		nexts= nexts.nextElementSibling;
+			// 		if(nexts==null){
+			// 			return null;
+			// 		}
+			// 		if(nexts.nodeName ==tagneame.toUpperCase()){
+			// 			return nexts;
+			// 		}
+			// 	}
+			// }
+				let arr= [];
+				let parson= element.parentNode;
+				console.log(parson)
+				while (parson.nodeName !='BODY'){
+						arr.push(parson)
+					parson= parson.parentNode;
+					// if(parson.nodeName=='BODY'){
+					// 	return
+					// }
+
+				}
+					return arr;
+			}
+	</script>
+	<script>
+		// let  box = document.getElementsByClassName('box')[0];
+		// let reshult= child(box);
+		// console.log(reshult);
+		let son = document.querySelector('span');
+		let result = parsen(son);
+		console.log(result);
+	</script>
+</body>
+</html>

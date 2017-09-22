@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机产生N个不同大小，不同颜色的圆</title>
+	<style>
+	body{
+		margin: 0;
+	}
+		.circle{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: red;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			/* transform: translate(10px, 10px); */
+			transition: all 1000ms;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+<script>
+	function fn(n1,n2,n3){
+		for(let i=0;i<n1;i++){
+			let circle =document.createElement('div');
+			let box = document.querySelector('.box')
+			circle.className='circle';
+			//位置随机
+			let lefts =Math.floor((innerWidth-50)*Math.random());
+			let tops =Math.floor((innerHeight-50)*Math.random());
+			//产生随机数
+			// circle.style.left=lefts+'px'
+			// circle.style.top=tops+'px'
+			//颜色随机
+			let str ='rgb(';
+			for (let i = 0; i <3;i++) {			
+			let num =Math.round(Math.random()*255);
+			str =str + num+',';
+			}
+				str=str.slice(0,-1);
+				str+=')';	
+			circle.style.background=str
+			//大小随机
+			let widths = Math.round(Math.random()*(n3-n2)+n2);
+			// let heights = Math.round(Math.random()*20+30);
+			circle.style.width=widths+'px'
+			circle.style.height=widths+'px'
+			box.appendChild(circle)
+			setTimeout(function(){
+				circle.style.transitionDelay=`${Math.random()*1000}ms`
+				circle.style.left=lefts+'px'
+				circle.style.top=tops+'px'},5)
+		}
+		
+	}
+</script>
+<script>
+	window.onload=function(){
+		fn(40,30,100)
+	}
+</script>
+</html>
